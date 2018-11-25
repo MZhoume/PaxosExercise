@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  paxos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    volumes:
+    - ./data:/app/data

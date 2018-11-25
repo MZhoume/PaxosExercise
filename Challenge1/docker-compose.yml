@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  paxos-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ASPNETCORE_URLS=http://0.0.0.0:80
+    - DATABASE_CONNECTION_STRING=Data Source=data.db;Version=3;
+    restart: on-failure
+    ports:
+    - "5000:80"
