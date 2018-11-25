@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Challenge1.Core.Filters;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using SwaggerOptions = Challenge1.Core.Swagger.SwaggerOptions;
 
@@ -31,6 +34,19 @@ namespace Challenge1
                     Title = "Paxos Coding Challenge #1 APIs",
                     Version = "v1"
                 }));
+
+            services.AddMvcCore(options =>
+                {
+                    options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+                    options.Filters.Add(typeof(ModelStateGlobalFilter));
+                })
+                .AddCors()
+                .AddApiExplorer()
+                .AddFormatterMappings()
+                .AddJsonFormatters()
+                .AddJsonOptions(options =>
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver())
+                .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -43,6 +59,8 @@ namespace Challenge1
             app.UseSwagger()
                 .UseSwaggerUI(options =>
                     options.SwaggerEndpoint(this._swaggerOptions["ApiEndpoint"], "Paxos APIs"));
+
+            app.UseMvc();
         }
     }
 }
