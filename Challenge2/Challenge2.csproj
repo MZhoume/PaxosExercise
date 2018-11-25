@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CodeAnalysisRuleSet>../Rulesets/Development.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="data/**/*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="7.8.0.7320"/>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.0.2"/>
+    </ItemGroup>
+
+</Project>
