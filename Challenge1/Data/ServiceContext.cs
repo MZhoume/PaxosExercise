@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Challenge1.Data
 {
+    /// <summary>
+    /// Data accessing configurations.
+    /// </summary>
     public class ServiceContext : DbContext
     {
         public ServiceContext(DbContextOptions<ServiceContext> options)

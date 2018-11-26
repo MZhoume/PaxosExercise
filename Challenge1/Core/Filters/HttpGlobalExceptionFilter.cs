@@ -6,6 +6,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Challenge1.Core.Filters
 {
+    /// <summary>
+    /// Filter for handling exceptions that haven't been handled in the code.
+    /// It will log the error incidence and provide user-friendly information (including stack trace
+    /// in development mode).
+    /// </summary>
     public class HttpGlobalExceptionFilter : IExceptionFilter
     {
         private readonly IHostingEnvironment _environment;

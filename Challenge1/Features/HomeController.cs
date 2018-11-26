@@ -5,6 +5,9 @@ using Microsoft.Extensions.Options;
 
 namespace Challenge1.Features
 {
+    /// <summary>
+    /// Controller for route /. It provides ways to redirect user to the SwaggerUI.
+    /// </summary>
     [Route("")]
     public class HomeController : Controller
     {

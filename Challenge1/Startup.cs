@@ -14,6 +14,9 @@ using SwaggerOptions = Challenge1.Core.Swagger.SwaggerOptions;
 
 namespace Challenge1
 {
+    /// <summary>
+    /// Configures the service.
+    /// </summary>
     public class Startup
     {
         private readonly IConfigurationSection _swaggerOptions;

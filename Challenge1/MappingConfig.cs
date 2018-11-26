@@ -4,6 +4,9 @@ using Challenge1.Features.Models;
 
 namespace Challenge1
 {
+    /// <summary>
+    /// Mapping configurations for mapping database dtos to http models, and vice versa.
+    /// </summary>
     public class MappingConfig : Profile
     {
         public MappingConfig()

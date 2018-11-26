@@ -25,7 +25,9 @@
         <PackageReference Include="FluentValidation.AspNetCore">
             <Version>8.0.101</Version>
         </PackageReference>
-        <PackageReference Include="Microsoft.AspNetCore.App"/>
+        <PackageReference Include="Microsoft.AspNetCore.App">
+            <Version>2.1.6</Version>
+        </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
             <Version>2.1.4</Version>
         </PackageReference>

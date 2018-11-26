@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Challenge1.Core.Filters
 {
+    /// <summary>
+    /// Filter for handling model validation errors.
+    /// It will cut the execution of the action short by providing appropriate <see cref="ErrorResult"/>.
+    /// </summary>
     public class ModelStateGlobalFilter : IActionFilter
     {
         public void OnActionExecuting(ActionExecutingContext context)
