@@ -1,7 +1,11 @@
-﻿using Challenge1.Core.Filters;
+﻿using AutoMapper;
+using Challenge1.Core.Filters;
+using Challenge1.Data;
+using Challenge1.Data.Abstractions;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
@@ -27,6 +31,11 @@ namespace Challenge1
         {
             services.AddOptions();
             services.Configure<SwaggerOptions>(this._swaggerOptions);
+
+            services.AddAutoMapper(options => options.CreateMissingTypeMaps = false);
+
+            services.AddDbContextPool<ServiceContext>(options => options.UseSqlite(this._connString));
+            services.AddScoped<IServiceRepository, ServiceRepository>();
 
             services.AddSwaggerGen(options =>
                 options.SwaggerDoc("paxos-api", new Info
